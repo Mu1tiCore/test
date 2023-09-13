@@ -10,7 +10,7 @@
 - name: Add an environment variable
   lineinfile: dest=~/.bash_profile regexp=^NGINX_CONF_DIR= line=NGINX_CONF_DIR=/etc/nginx
 
-- name: ñreate directory
+- name: create directory
   file:
     path=/etc/nginx
     mode=0700
