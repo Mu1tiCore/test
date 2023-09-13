@@ -1,0 +1,10 @@
+---
+
+- hosts: ngx-webserver
+  user: nginx
+  become: true
+  become_method: su
+  become_user: root
+  roles: 
+	- role: install-nginx
+	- role: prepare-disk

@@ -1,0 +1,14 @@
+---
+
+- name: Collect stats for hardware
+     ansible.builtin.setup:
+       gather_subset:
+         - hardware
+
+- name: create partition
+      parted:
+        device: "{{ dev_path }}"
+        number: 1
+        flags: [ lvm ]
+        state: present
+        part_end: "{{ disk_size  }}"

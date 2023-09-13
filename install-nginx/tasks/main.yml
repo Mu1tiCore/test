@@ -1,0 +1,26 @@
+---
+
+- name: Add User For Servers
+  user:
+    name: nginx
+    password: nginx
+    state: present
+    update_password: none
+
+- name: Add an environment variable
+  lineinfile: dest=~/.bash_profile regexp=^NGINX_CONF_DIR= line=NGINX_CONF_DIR=/etc/nginx
+
+- name: ñreate directory
+  file:
+    path=/etc/nginx
+    mode=0700
+    owner=nginx
+    group=root
+    state=directory
+
+- name: Install Nginx
+    apt: name=nginx update_cache=yes state=latest
+ 
+- name: Start Nginx and boot
+    service: name=nginx state=started enabled=yes
+
